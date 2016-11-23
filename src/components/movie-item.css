@@ -1,0 +1,28 @@
+.movie-item {
+  margin-bottom: 1em;
+}
+
+.movie-item .content {
+  position: relative;
+}
+
+.movie-item img {
+  width: 100%;
+}
+
+.movie-item h2 {
+  width: 75%;
+  margin-left: 0.4rem;
+  font-weight: lighter;
+}
+
+.movie-item date {
+  margin-left: 0.4rem;
+}
+
+.movie-item .fav {
+  position: absolute;
+  top: 0;
+  right: 0.6em;
+  font-size: 2em;
+}
