@@ -17,7 +17,10 @@ const MovieItem = React.createClass({
         />
         <div className='content'>
           <h2> {this.props.movie.title} </h2>
-          <date> { moment(this.props.movie.release_date).format('MMMM Do YYYY') } </date>
+          <div className="date">
+            <label>release at: </label>
+            <date> { moment(this.props.movie.release_date).format('MMMM Do YYYY') } </date>
+          </div>
           <div className="fav" onClick={this.handleClick}>
             { this.props.movie.fav ?
               (<Icon type="heart" />) :
