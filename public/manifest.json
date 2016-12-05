@@ -1,6 +1,6 @@
 {
-  "short_name": "create-react-pwa",
-  "name": "Create React PWApp",
+  "short_name": "UDMovie",
+  "name": "UDMovie",
   "icons": [
     {
       "src": "favicon.ico",
