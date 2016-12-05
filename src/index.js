@@ -6,8 +6,6 @@ import { getMovies } from './util';
 import './index.css';
 import 'antd/dist/antd.css';
 
-
-
 function checkFavs() {
   if ( 7 < moment().hour() && moment().hour() < 22) {
     const movies = getMovies();

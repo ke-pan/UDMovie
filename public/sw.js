@@ -1,4 +1,3 @@
-
 const staticCacheName = 'static-v4';
 
 self.addEventListener('install', function(event) {

@@ -3,13 +3,22 @@ import moment from 'moment';
 import { Icon, DatePicker } from 'antd';
 import './movie-item.css';
 
+// const style = {
+//   // position: 'fixed'
+//   left: '10px'
+// };
+
 const MovieItem = React.createClass({
   getInitialState() {
     return { date_picking: false }
   },
   render() {
     let date_pikcer = this.state.date_picking ? <div className="date-picker">
-                                                  <DatePicker  onChange={this.pickDate} open={true}/>
+                                                  <DatePicker
+                                                    onChange={this.pickDate}
+                                                    open={true}
+                                                    disabledDate={ date => date < moment() }
+                                                    placeholder="Pick a day to watch"/>
                                                 </div> : null
     return(
       <div className='movie-item'>
