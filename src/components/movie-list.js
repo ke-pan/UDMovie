@@ -6,7 +6,7 @@ function MovieList(props) {
   const movieItems = props.movies.map((result) => {
     return(
       <Col xs={24} sm={12} md={6} key={result.id}>
-        <MovieItem movie={result} toggleFav={props.toggleFav}/>
+        <MovieItem movie={result} clearFav={props.clearFav} setFav={props.setFav}/>
       </Col>
     );
   })

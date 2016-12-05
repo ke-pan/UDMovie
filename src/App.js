@@ -14,11 +14,8 @@ class App extends Component {
       movies: [],
     };
     this.menuChange = this.menuChange.bind(this);
-    this.toggleFav = this.toggleFav.bind(this);
-    // this.getMovies = this.getMovies.bind(this);
-    // this.setMovies = this.setMovies.bind(this);
-    // this.removeMovie = this.removeMovie.bind(this);
-    // this.storeMovie = this.storeMovie.bind(this);
+    this.clearFav = this.clearFav.bind(this);
+    this.setFav = this.setFav.bind(this);
   }
   componentDidMount() {
     const favMovieIds = getMovies().map(movie => movie.id);
@@ -39,7 +36,7 @@ class App extends Component {
         <Nav menuChange={this.menuChange} menu={this.state.menu}/>
         { this.state.loading ?
           (<div className='loading'> <Spin size="large"/> </div>) :
-          (<MovieList movies={this.state.movies} toggleFav={this.toggleFav} />)
+          (<MovieList movies={this.state.movies} clearFav={this.clearFav} setFav={this.setFav}/>)
         }
       </div>
 
@@ -68,34 +65,21 @@ class App extends Component {
       this.setState({ menu, movies });
     }
   }
-  toggleFav(movie) {
-    movie.fav = !movie.fav
-    if (movie.fav) {
-      storeMovie(movie);
-    } else {
-      removeMovie(movie);
-    }
+  clearFav(movie) {
+    movie.fav = false;
+    removeMovie(movie);
     this.setState(prevState => ({
       movies: prevState.movies
     }));
   }
-  // storeMovie(movie) {
-  //   let movies = this.getMovies();
-  //   movies.push(movie);
-  //   this.setMovies(movies);
-  // }
-  // removeMovie(movie) {
-  //   let movies = this.getMovies();
-  //   const id = movies.findIndex(e => e.id === movie.id);
-  //   movies.splice(id, 1);
-  //   this.setMovies(movies);
-  // }
-  // getMovies() {
-  //   return JSON.parse(localStorage.getItem('favs')) || [];
-  // }
-  // setMovies(movies) {
-  //   localStorage.setItem('favs', JSON.stringify(movies));
-  // }
+  setFav(movie, dateString) {
+    movie.fav = true
+    movie.book_date = dateString;
+    storeMovie(movie);
+    this.setState(prevState => ({
+      movies: prevState.movies
+    }));
+  }
 }
 
 export default App;

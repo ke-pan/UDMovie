@@ -1,13 +1,16 @@
 import React from 'react';
 import moment from 'moment';
-import { Icon } from 'antd';
+import { Icon, DatePicker } from 'antd';
 import './movie-item.css';
 
 const MovieItem = React.createClass({
-  // getInitialState() {
-  //   return { fav: this.props.movie.fav }
-  // },
+  getInitialState() {
+    return { date_picking: false }
+  },
   render() {
+    let date_pikcer = this.state.date_picking ? <div className="date-picker">
+                                                  <DatePicker  onChange={this.pickDate} open={true}/>
+                                                </div> : null
     return(
       <div className='movie-item'>
         <img
@@ -28,11 +31,20 @@ const MovieItem = React.createClass({
             }
           </div>
         </div>
+        { date_pikcer }
       </div>
     );
   },
   handleClick() {
-    this.props.toggleFav(this.props.movie)
+    if (this.props.movie.fav) {
+      this.props.clearFav(this.props.movie);
+    } else {
+      this.setState({ date_picking: true });
+    }
+  },
+  pickDate(date, dateString) {
+    this.setState({ date_picking: false });
+    this.props.setFav(this.props.movie, dateString);
   }
 });
 
