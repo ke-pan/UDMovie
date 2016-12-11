@@ -6,4 +6,4 @@
 2. `npm start`
 
 ## build
-`npm build`
+`npm run build`
