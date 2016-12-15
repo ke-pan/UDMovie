@@ -22,4 +22,4 @@ You will need the following things properly installed on your computer.
 
 ## Build
 
-`npm build`
+`npm run build`
